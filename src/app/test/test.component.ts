@@ -61,7 +61,7 @@ export class TestComponent implements OnInit {
       //this.MarkedQuestions.push
 
       this.MarkedQuestions.push(tempMarked);
-      alert("Word is marked");
+     // alert("Word is marked");
       console.log(this.MarkedQuestions);
     } else {
       
