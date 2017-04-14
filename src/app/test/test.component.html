@@ -1,0 +1,59 @@
+<h3>Test</h3>
+<div class="col-md-4">
+	<label>Mark or UnMark the word: </label>
+  <label class="toggle col-sm-8">
+    <input type="checkbox" (click)="Existing()" name="MarkWord" [(ngModel)]="IsMarked">
+    <span class="handle"></span>
+  </label>
+</div>
+<div>
+
+	<div class="row question">
+		<div class="row ID">
+			{{test.currentQuestion?.QuestionID}}<br/>
+			
+		</div>
+		
+		<div class="row Question">
+			{{test.currentQuestion?.Question}}
+		</div>
+ <form action="">
+		<div *ngFor="let choice of test.currentQuestion?.FinalFourShuffledChoices">
+			<div class="row">
+				<input type="radio" [(ngModel)]="userChoiceID" name="choices" [value]="choice.ChoiceText"  [checked]="userChoiceID==choice.ChoiceText" (change)="updateAndAddCurrentHit()"/> {{choice.ChoiceText}}
+				<!-- <input type="radio" [(ngModel)]="model.sex"  name="sex" value="male">Male<br>-->
+				 
+			</div>
+		</div>
+		<div>Selected Radio: {{userChoiceID}}</div>
+ </form>
+
+		<br/><br/>
+<h3>Attempt History of you for this question</h3>
+		<div *ngFor="let attempt of test.currentQuestion?.Attempts">
+			<div class="row">
+				
+				<b>Attempt Number: </b> {{attempt.AttemptNumber}} || 
+				
+				<b>Test or STudy Session</b> {{attempt.TestOrStudySession}} || 
+				
+				<b>You Took: </b> {{attempt.TimeTaken}} Seconds || 
+				
+				<b>Your Final answer for the attempt: </b> {{attempt.UserFinalHitAnswer}}.
+				<br/><br/>
+			</div>
+		</div>
+
+		<br/><br/>
+
+		<b>Score: </b>{{test?.Score}}
+
+		<br/><br/>
+
+		<button (click)="NextQuestion()">Next</button><br/><br/>
+
+
+
+	</div>
+
+</div>
