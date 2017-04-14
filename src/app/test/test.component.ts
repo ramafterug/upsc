@@ -61,6 +61,7 @@ export class TestComponent implements OnInit {
       //this.MarkedQuestions.push
 
       this.MarkedQuestions.push(tempMarked);
+      //Dummy comment for git testing develop branch another commit
       alert("Word is marked");
       console.log(this.MarkedQuestions);
     } else {
