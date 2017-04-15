@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+/// <reference path = "../models.ts" />
+import * as afterUGExtended from "../models";
 import { AuthenticationService } from '../_services/index';
 
 @Component({
@@ -26,8 +27,11 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(result => {
-                if (result === true) {
+                var token = result.Token;
+                if (token != "") {
+                      localStorage.setItem('currentUser', JSON.stringify({ username: this.model.username, token: token }));
                     this.router.navigate(['/']);
+
                 } else {
                     this.error = 'Username or password is incorrect';
                     this.loading = false;

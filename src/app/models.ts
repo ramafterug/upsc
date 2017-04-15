@@ -114,6 +114,11 @@ export namespace afterugExtended {
 		Users: afterugExtended.Users;
 	}
 
+	export class TokenFromServer {
+		Token: string;
+		
+	}
+
 
 	
     }
