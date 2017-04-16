@@ -23,15 +23,12 @@ export class LoginComponent implements OnInit {
         this.authenticationService.logout();
     }
 
-    login() {
+     login() {
         this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(result => {
-                var token = result.Token;
-                if (token != "") {
-                      localStorage.setItem('currentUser', JSON.stringify({ username: this.model.username, token: token }));
+                if (result === true) {
                     this.router.navigate(['/']);
-
                 } else {
                     this.error = 'Username or password is incorrect';
                     this.loading = false;

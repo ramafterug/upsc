@@ -14,20 +14,17 @@ export class AuthenticationService {
         this.token = currentUser && currentUser.token;
     }
 
-    login(username: string, password: string): Observable<afterUGExtended.afterugExtended.TokenFromServer> {
-          var loginUrl = 'http://localhost:54347/api/authenticate'; 
+   
+
+     login(username: string, password: string): Observable<boolean> {
+        var loginUrl = 'http://localhost:1980/api/authenticate'; 
  let bodyString = JSON.stringify({ username: username, password: password }); // Stringify payload
         let headers      = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options       = new RequestOptions({ headers: headers }); 
         return this.http.post(loginUrl, bodyString, options)
-        .map((res: Response) => res.json());
-      //.catch((error: any) => Observable.throw(error.json().error || 'Server Error'));
-            /*.map((response: Response) => {
+            .map((response: Response) => {
                 // login successful if there's a jwt token in the response
-                //let token = response.json();// && response.json().token;
-               console.log(response);
-               console.log(response.json());
-               let token= response.json();
+                let token = response.json() && response.json().token;
                 if (token) {
                     // set token property
                     this.token = token;
@@ -41,8 +38,7 @@ export class AuthenticationService {
                     // return false to indicate failed login
                     return false;
                 }
-            });*/
-            
+            });
     }
 
     logout(): void {

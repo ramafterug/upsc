@@ -17,7 +17,7 @@ export class TestQuestionService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
   //private testQuestionUrl = '/api/Question/Test/';
 
-  private testQuestionUrl = 'http://localhost:54347/api/Question/Test/';
+  private testQuestionUrl = 'http://localhost:1980/api/Question/Test/';
   constructor(private http: Http) { }
 
   private handleError(error: any): Promise<any> {
@@ -35,7 +35,7 @@ export class TestQuestionService {
   }
 
   saveAttemptsToDB(attemptsToSave: afterUGExtended.afterugExtended.Attempts[]): Observable<string> {
-    var attemptsUrl = 'http://localhost:54347/api/Attempts'; 
+    var attemptsUrl = 'http://localhost:1980/api/Attempts'; 
  let bodyString = JSON.stringify(attemptsToSave); // Stringify payload
         let headers      = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options       = new RequestOptions({ headers: headers }); 
